@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: hub-editorial-icr
+    env: node
+    plan: free
+    region: ohio
+    buildCommand: npm run build
+    startCommand: npm start
+    healthCheckPath: /api/data
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
