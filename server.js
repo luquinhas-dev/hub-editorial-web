@@ -272,4 +272,9 @@ const server = http.createServer(async (req, res) => {
 
 server.listen(PORT, '0.0.0.0', () => {
   console.log(`Hub Editorial Web rodando em http://0.0.0.0:${PORT}`);
+  if (fs.existsSync(path.join(DIST_DIR, 'index.html'))) {
+    console.log(`✅ Frontend compilado encontrado em ${DIST_DIR}`);
+  } else {
+    console.warn(`⚠️ AVISO: Frontend NÃO encontrado em ${DIST_DIR}. Execute npm run build.`);
+  }
 });
