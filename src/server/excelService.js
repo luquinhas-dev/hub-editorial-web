@@ -1,16 +1,31 @@
 import ExcelJS from 'exceljs';
 import path from 'path';
 import fs from 'fs';
+import { fileURLToPath } from 'url';
 
-const EXCEL_PATH = path.resolve(process.cwd(), 'Database Controle Editorial.xlsx');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+function getExcelPath() {
+  const c1 = path.resolve(process.cwd(), 'Database Controle Editorial.xlsx');
+  if (fs.existsSync(c1)) return c1;
+  const c2 = path.resolve(__dirname, '../../Database Controle Editorial.xlsx');
+  if (fs.existsSync(c2)) return c2;
+  const c3 = path.resolve('/app', 'Database Controle Editorial.xlsx');
+  if (fs.existsSync(c3)) return c3;
+  return c1;
+}
+
+const EXCEL_PATH = getExcelPath();
 const DOWNLOADS_PATH = path.resolve('/home/luccas/Downloads', 'Database Controle Editorial.xlsx');
 
 export async function getWorkbook() {
   const wb = new ExcelJS.Workbook();
-  if (fs.existsSync(EXCEL_PATH)) {
-    await wb.xlsx.readFile(EXCEL_PATH);
+  const filePath = getExcelPath();
+  if (fs.existsSync(filePath)) {
+    await wb.xlsx.readFile(filePath);
   } else {
-    throw new Error(`Planilha não encontrada em ${EXCEL_PATH}`);
+    throw new Error(`Planilha não encontrada em ${filePath}`);
   }
   return wb;
 }

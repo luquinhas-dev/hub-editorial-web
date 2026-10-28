@@ -72,6 +72,12 @@ const server = http.createServer(async (req, res) => {
   const pathname = url.pathname;
 
   try {
+    if (pathname === '/health' || pathname === '/healthz' || pathname === '/api/health') {
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'application/json');
+      return res.end(JSON.stringify({ status: 'ok', uptime: process.uptime() }));
+    }
+
     if (pathname === '/api/data' && req.method === 'GET') {
       const data = await getAllEditorialData();
       res.setHeader('Content-Type', 'application/json');
@@ -264,6 +270,6 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(PORT, () => {
-  console.log(`Hub Editorial Web rodando em http://localhost:${PORT}`);
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`Hub Editorial Web rodando em http://0.0.0.0:${PORT}`);
 });
