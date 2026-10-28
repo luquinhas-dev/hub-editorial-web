@@ -25,9 +25,7 @@ O sistema foi preparado para rodar **100% online, seguro com SSL/HTTPS e sem cus
    * Acesse [github.com/new](https://github.com/new) e crie um repositório chamado `hub-editorial-web`.
    * Envie o código do seu computador executando no terminal:
      ```bash
-     git remote add origin https://github.com/SEU_USUARIO/hub-editorial-web.git
-     git add .
-     git commit -m "feat: Hub Editorial Web v1.6"
+     git remote set-url origin https://github.com/luquinhas-dev/hub-editorial-web.git
      git push -u origin main
      ```
 
