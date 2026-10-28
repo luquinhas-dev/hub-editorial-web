@@ -1,7 +1,7 @@
 # SEGUNDO CÉREBRO (SECOND BRAIN) — HUB EDITORIAL WEB (ICR FLORIANÓPOLIS)
 **Plataforma Oficial de Gestão, Planejamento e Pipeline Editorial da ICR Florianópolis**  
 *Documento Vivo de Engenharia de Contexto, Arquitetura, Regras de Negócio e Operação Técnica*  
-*Versão Atual:* v1.6  
+*Versão Atual:* v1.7  
 *Última Atualização:* 28 de Outubro de 2026  
 
 ---
@@ -224,6 +224,12 @@ Nossa comunicação deve:
 
 ## 9. Troubleshooting Log & Histórico de Modificações
 
+* **v1.7 (28/10/2026):**
+  * **Prontidão para Nuvem 100% Gratuita e Segura:**
+    * Criação do blueprint `render.yaml` e `Dockerfile` otimizado para deploy em nuvem com 1 clique (Render / Koyeb / Docker).
+    * Proteção de credenciais: exclusão de arquivos de ambiente no `.gitignore` e template `.env.example`.
+    * Tela de Bloqueio & PIN de Acesso Oficial da ICR (`icr2026`): proteção contra acessos externos não autorizados ao rodar em URL pública, com botão de logout/bloqueio no cabeçalho e memorização segura no navegador.
+    * Inicialização do repositório Git local (`main`) e documentação detalhada no `README.md`.
 * **v1.6 (28/10/2026):**
   * **Módulo Completo de Escala de Equipe & Voluntários:** criação de aba dedicada com suporte a gestão de nomes, funções técnicas/litúrgicas e datas de atuação.
   * **Datas Fixas (Cultos Recorrentes) vs Eventos Específicos:**
